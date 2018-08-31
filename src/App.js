@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import Helmet from 'react-helmet'
+import data from '@groceristar/groceristar-fetch/chickenKyiv';
 
 // import {
 //   Button, Modal, ModalHeader, ModalBody,
@@ -38,6 +39,16 @@ class App extends Component {
     console.log(this.state.recipes);
   }
 
+  renderCards(){
+
+  return data.getRecipe().map((item) =>
+    <div key={item.title} className="col-md-4">
+      <RCard />
+    </div>
+  );
+
+  }
+
   render() {
     const { recipes } = this.state;
     const { ingredients } = this.state;
@@ -68,15 +79,7 @@ class App extends Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-4">
-              <RCard />
-            </div>
-            <div className="col-md-4">
-              <RCard />
-            </div>
-            <div className="col-md-4">
-              <RCard />
-            </div>
+            {this.renderCards()}
           </div>
           </div>
 

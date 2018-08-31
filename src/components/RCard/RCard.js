@@ -2,20 +2,34 @@ import React from 'react'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap'
+import data from '@groceristar/groceristar-fetch/chickenKyiv';
 
+const Recipe = () => {
+
+  console.log(data.getRecipe()[0].title);
+}
 const RCard = (props) => {
   return (
     <div>
       <Card>
-        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+        <CardImg top width="100%" src={data.getRecipe()[0].img} alt="Card image cap" />
         <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardTitle>{data.getRecipe()[0].title}</CardTitle>
+          <CardSubtitle> </CardSubtitle>
           <CardText>
-            Some quick example text to build on the card title and
-            make up the bulk of the cards content.
+            <ul>
+              <li>
+                Prepare time : {data.getRecipe()[0].prep_time}
+              </li>
+              <li>
+                Total time : {data.getRecipe()[0].total_time}
+              </li>
+              <li>
+                Recipe yield : {data.getRecipe()[0].recipe_yield}
+              </li>
+            </ul>
            </CardText>
-          <Button>Button</Button>
+          <Button>Read more</Button>
         </CardBody>
       </Card>
     </div>

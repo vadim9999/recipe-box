@@ -3,7 +3,7 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap'
 import PropTypes from 'prop-types';
-
+import RCard   from './components/RCard/RCard'
 // import RecipeCard from './RecipeCard';
 import data from '@groceristar/groceristar-fetch/chickenKyiv';
 import _ from 'lodash';
@@ -11,9 +11,14 @@ import _ from 'lodash';
 const RecipeList = ({ recipes }) => (
   <Card.Group itemsPerRow={5}>
     {data.getRecipe().forEach((item) => {
-        console.log(item)
-      }),
-      recipes.map(recipe => RecipeCard(recipe))}
+      <div key={item.title} className="col-md-4">
+        <RCard />
+      </div>
+      // console.log(item);
+    })
+      // recipes.map(recipe => RecipeCard(recipe))
+
+    }
   </Card.Group>
 );
 
